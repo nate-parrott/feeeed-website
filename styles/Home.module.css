@@ -14,3 +14,21 @@
   align-items: center;
   flex-grow: 1;
 }
+
+.screenshots {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2em;
+}
+
+.screenshots > * {
+  flex-basis: 0;
+  flex-grow: 1;
+  border-radius: 1rem;
+  box-shadow: 0 0.1rem 0.2rem rgba(0,0,0,0.1), 0 0.1rem 0.8rem rgba(0,0,0,0.1);
+}
+
+.screenshots > *:not(:last-child) {
+  margin-right: 1rem !important;
+}
