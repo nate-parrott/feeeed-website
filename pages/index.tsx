@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import Link from 'next/link'
 import Base from '../components/base'
 import Header from '../components/header'
 import styles from '../styles/Home.module.css'
@@ -16,11 +16,12 @@ const Home: NextPage = () => {
 
       <Base>
         <Header />
+        
         <h1>Build your own news feed</h1>
         <h3>Follow any website</h3>
         <footer className={styles.footer}>
-          <a href='/privacy'>Privacy</a>
-          <a href='/terms'>Terms</a>
+          <Link href='/privacy'>Privacy</Link>
+          <Link href='/terms'>Terms</Link>
         </footer>
       </Base>
     </div>

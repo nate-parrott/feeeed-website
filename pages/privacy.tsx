@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Base from '../components/base'
+import Header from '../components/header'
 
 const Privacy: NextPage = () => {
     return (
@@ -11,6 +12,7 @@ const Privacy: NextPage = () => {
         </Head>
 
         <Base>
+            <Header />
             <h1>Privacy Policy</h1>
             <h2>feeeed’s commitment to privacy</h2>
 

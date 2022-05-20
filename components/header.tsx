@@ -4,8 +4,10 @@ import styles from '../styles/Header.module.css'
 function Header() {
     return (
         <header className={styles.header}>
-            <a className={styles.logo2} href='/'>
-                <Image src='/Icon.png' width={128} height={128} />
+            <a href='/'>
+                <div className={styles.logo2}>
+                    <Image src='/Icon.png' width={128} height={128} />
+                </div>
             </a>
             <a href='/'>
                 <h2>feeeed</h2>
