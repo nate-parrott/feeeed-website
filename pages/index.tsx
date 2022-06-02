@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Base from '../components/base'
+import Features from '../components/features'
 import Header from '../components/header'
 import styles from '../styles/Home.module.css'
 
@@ -15,41 +16,50 @@ const Home: NextPage = () => {
         <link rel="icon" href="/Icon.png" />
       </Head>
 
-      <Base>
-        <Header />
-        <div className={styles.screenshots}>
-          <Image src="/s1.png" width="512" height="1109" />
-          <Image src="/s2.png" width="512" height="1109" />
-          <Image src="/s3.png" width="512" height="1109" />
+      <Splash />
+
+      <div className={styles.blackPage}>
+        <div className={styles.longform}>
+          <h1>scroll on your own terms</h1>
+          <p>In 2022, we work, play, sleep... and scroll. feeds and timelines dictate where our spare attention goes: what we read, watch and care about.</p>
+          <p>But your “for you” page isn’t really <em>for you</em> — it’s just the content that the company knows will keep you hooked.</p>
+          <p>What if you ran your own news feed? You could fill it with things you actually care about, not just clickbait. real journalism, not whatever your racist high-school classmate shares. Learn something new, remember to stay active, keep tabs on what matters.</p>
+          <p>feeeed is an app for that!</p>
         </div>
+      </div>
 
-        <h1>Build your own news feed</h1>
+      <div className={styles.whitePage}>
+        <h1 className={styles.featuresLabel}>feeeeatures</h1>
+        <Features />
+      </div>
 
-        <p>
-        you spend hours scrolling feeds all day. shouldn't YOU be in control of what you see, rather than some algorithm?
-        </p>
-        
-        <p>
-          with feeeed, you can build your own news feed, on your own terms:
-        </p>
-        <ul>
-        <li> subscribe to any website, using RSS, Twitter or just seeing a copy of their website in your feed</li>
-        <li>see local weather, or flashbacks from your photo library</li>
-        <li>subscribe to any subreddit, or read newsletters from your gmail inbox</li>
-        <li>add your own custom reminders, or flashcards, or see your step count for the day</li>
-        </ul>
-        
-        <p>
-          take back your news feed ~ scroll on your own terms :)
-        </p>
-
-        <footer className={styles.footer}>
+      <footer className={styles.footer}>
           <Link href='/privacy'>Privacy</Link>
           <Link href='/terms'>Terms</Link>
-        </footer>
-      </Base>
+      </footer>
     </div>
   )
 }
+
+const Splash = () => (
+  <div className={styles.splash}>
+    <SplashCTA />
+    <div className={styles.phonePic} />
+  </div>
+)
+
+const SplashCTA = ({hidden}: {hidden?: boolean}) => (
+  <div className={styles.splashCTA} style={{opacity: hidden ? 0 : 1}} aria-hidden={hidden}>
+    <h1>run your own news feeeed</h1>
+    <DownloadIcon />
+  </div>
+)
+
+const DownloadIcon = () => (
+  <a href='https://testflight.apple.com/join/ixRrWfQL' className={styles.downloadIcon}>
+    Download
+    <img src='/Heart.svg' />
+  </a>
+)
 
 export default Home
