@@ -99,14 +99,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3em;
+  padding: 1.5em;
 }
 
 .longform {
   max-width: 800px;
-  line-height: 2;
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-family: 'Playfair Display', serif;
+}
+
+@media screen and (min-width: 600px) {
+  .blackPage, .whitePage {
+    padding: 3em;
+  }
+
+  .longform {
+    font-size: 1.5em;
+  }
+}
+
+.longform p {
+  line-height: 2;
 }
 
 .longform h1 {
@@ -127,4 +140,27 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+}
+
+.buzz-on-hover {
+  transform: perspective(1px) translateZ(0);
+  transition: transform 0.1s;
+}
+
+.buzz-on-hover:hover {
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-name: buzz;
+}
+
+@keyframes buzz {
+  0% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(3px) rotate(2deg);
+  }
+  100% {
+    transform: translateX(-3px) rotate(-2deg);
+  }
 }

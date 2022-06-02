@@ -2,19 +2,28 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect } from 'react'
 import Base from '../components/base'
 import Features from '../components/features'
 import Header from '../components/header'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
+  useEffect(() => {
+    const el = document.querySelector('html');
+    if (el) {
+      el.style.backgroundColor = '#AAC9F5';
+    }
+  })
   return (
     <div className={styles.container}>
       <Head>
         <title>feeeed » build your own news feed</title>
         <meta name="description" content="Follow anyone and any website" />
         <link rel="icon" href="/Icon.png" />
+        <meta name="theme-color" content="#AAC9F5" />
       </Head>
+
 
       <Splash />
 
@@ -35,6 +44,7 @@ const Home: NextPage = () => {
 
       <footer className={styles.footer}>
           <Link href='/privacy'>Privacy</Link>
+          <DownloadIcon />
           <Link href='/terms'>Terms</Link>
       </footer>
     </div>
@@ -56,7 +66,7 @@ const SplashCTA = ({hidden}: {hidden?: boolean}) => (
 )
 
 const DownloadIcon = () => (
-  <a href='https://testflight.apple.com/join/ixRrWfQL' className={styles.downloadIcon}>
+  <a href='https://testflight.apple.com/join/ixRrWfQL' className={[styles.downloadIcon, styles['buzz-on-hover']].join(' ')}>
     Download
     <img src='/Heart.svg' />
   </a>

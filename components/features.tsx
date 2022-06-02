@@ -11,10 +11,6 @@ const Features = () => {
                 <Image src='/Cards/FollowAnySite.png' width={400} height={369} />
             </div>
 
-            <div className={[styles.card, styles.dark, styles.red].join(' ')}>
-                <h1>No accounts or servers. Private by design.</h1>
-            </div>
-
             <div className={[styles.card, styles.purple].join(' ')}>
                 <h1 style={{marginBottom: '0.5em'}}>Read newsletters from your Gmail inbox</h1>
                 <Image src='/Cards/Newsletter.png' width={400} height={402} />
@@ -35,9 +31,13 @@ const Features = () => {
                 <Image src='/Cards/Widgets.png' width={400} height={360} />
             </div>
 
-            <div className={[styles.card, styles.healthRed].join(' ')}>
-                <Image src='/Cards/Health.png' width={400} height={388} />
-                <h1 style={{marginTop: '0.3em'}}>Get reminders to reach 10k steps each day</h1>
+            <div className={[styles.card, styles.green].join(' ')}>
+                <Image src='/Cards/Web.png' width={400} height={488} />
+                <h1 style={{marginTop: '0.3em'}}>Turn any website into a live card</h1>
+            </div>
+
+            <div className={[styles.card, styles.dark, styles.red].join(' ')}>
+                <h1>No accounts or servers. Private by design.</h1>
             </div>
 
             <div className={[styles.card, styles.blue].join(' ')}>
@@ -45,21 +45,22 @@ const Features = () => {
                 <h1 style={{marginTop: '0.3em'}}>Keep tabs on the weather</h1>
             </div>
 
-            <div className={[styles.card, styles.green].join(' ')}>
-                <Image src='/Cards/Web.png' width={400} height={488} />
-                <h1 style={{marginTop: '0.3em'}}>Turn any website into a live card</h1>
-            </div>
-
-            <div className={[styles.card, styles.dark].join(' ')}>
-                <h1>Follow any subreddit</h1>
-                <Image src='/Cards/Reddit.png' width={400} height={445} />
-            </div>
-
             <div className={[styles.card, styles.dark].join(' ')}>
                 <h1 style={{marginBottom: '0.3em'}}>A reading list that reminds you to read</h1>
                 <Image src='/Cards/ReadingList.png' width={400} height={371} />
             </div>
 
+            <div className={[styles.card, styles.healthRed].join(' ')}>
+                <Image src='/Cards/Health.png' width={400} height={388} />
+                <h1 style={{marginTop: '0.3em'}}>Get reminders to reach 10k steps each day</h1>
+            </div>
+
+            <div className={[styles.card, styles.blue].join(' ')}>
+                <h1>Fully chronological feed, if you want</h1>
+                <Image src='/Cards/Chron.png' width={400} height={237} />
+            </div>
+
+            
             <div className={[styles.card, styles.dark].join(' ')}>
                 <h1 style={{marginBottom: '0.3em'}}>Flashbacks from your photo library</h1>
                 <Image src='/Cards/Photos.png' width={400} height={348} />
@@ -70,9 +71,9 @@ const Features = () => {
                 <h1 style={{marginTop: '0.3em'}}>Import flashcards and learn something while you scroll.</h1>
             </div>
 
-            <div className={[styles.card, styles.blue].join(' ')}>
-                <h1>Fully chronological feed, if you want</h1>
-                <Image src='/Cards/Chron.png' width={400} height={237} />
+            <div className={[styles.card, styles.dark].join(' ')}>
+                <h1>Follow any subreddit</h1>
+                <Image src='/Cards/Reddit.png' width={400} height={445} />
             </div>
 
             <div className={[styles.card, styles.purple].join(' ')}>
