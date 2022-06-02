@@ -12,7 +12,8 @@ const Features = () => {
             </div>
 
             <div className={[styles.card, styles.purple].join(' ')}>
-                <h1 style={{marginBottom: '0.5em'}}>Read newsletters from your Gmail inbox</h1>
+                <h1>Read newsletters from your Gmail inbox</h1>
+                <p>Link your Gmail and read newsletters from your inbox. The data never leaves your phone.</p>
                 <Image src='/Cards/Newsletter.png' width={400} height={402} />
             </div>
 
