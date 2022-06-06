@@ -44,18 +44,18 @@
 
     line-height: 1.35;
 
-    transform: perspective(1px) translateZ(0);
+    /* transform: perspective(1px) translateZ(0);
     transition-duration: 0.3s;
     transition-property: transform box-shadow border;
     box-shadow: 0 0 0 rgba(0,0,0,0);
-    border: 1px solid rgba(0,0,0,0);
+    border: 1px solid rgba(0,0,0,0); */
 }
 
-.card:hover {
+/* .card:hover {
     transform: scale(1.05);
     border: 1px solid rgba(0,0,0,0.07);
     box-shadow: 0 0.1em 1em rgba(0,0,0,0.1);
-}
+} */
 
 .card h1 {
     font-size: 1.5em;

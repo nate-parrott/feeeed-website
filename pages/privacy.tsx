@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Base from '../components/base'
 import Header from '../components/header'
+import styles from '../styles/Base.module.css'
 
 const Privacy: NextPage = () => {
     return (
@@ -13,6 +14,7 @@ const Privacy: NextPage = () => {
 
         <Base>
             <Header />
+            <GoogleDisclosure />
             <h1>Privacy Policy</h1>
             <h2>feeeed’s commitment to privacy</h2>
 
@@ -78,4 +80,14 @@ const Privacy: NextPage = () => {
     </div>
     )
 }
+
+const GoogleDisclosure = () => (
+  <p className={styles.callout}>
+     feeeed’s use and transfer to any other app of information received 
+     from Google APIs will adhere to the <a href='https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes'>Google API Services User Data Policy</a>, including the Limited Use 
+     requirements.
+     Specifically, the app does not transfer any information received from Google APIs to any other service or device, under any condition.
+  </p>
+)
+
 export default Privacy;
