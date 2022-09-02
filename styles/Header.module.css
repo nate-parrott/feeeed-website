@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.header a {
+    text-decoration: none;
+}
+
 .logo2 {
     width: 3rem;
     height: 3rem;
