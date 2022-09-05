@@ -22,6 +22,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Follow anyone and any website" />
         <link rel="icon" href="/Icon.png" />
         <meta name="theme-color" content="#AAC9F5" />
+        <meta name="apple-itunes-app" content="app-id=1600187490" />
       </Head>
 
 
@@ -44,8 +45,9 @@ const Home: NextPage = () => {
 
       <footer className={styles.footer}>
           <Link href='/privacy'>Privacy</Link>
-          <DownloadIcon />
           <Link href='/terms'>Terms</Link>
+          <Link href='https://testflight.apple.com/join/ixRrWfQL'>Beta</Link>
+          <DownloadIcon />
       </footer>
     </div>
   )
@@ -66,7 +68,7 @@ const SplashCTA = ({hidden}: {hidden?: boolean}) => (
 )
 
 const DownloadIcon = () => (
-  <a href='https://testflight.apple.com/join/ixRrWfQL' className={[styles.downloadIcon, styles['buzz-on-hover']].join(' ')}>
+  <a href='https://apps.apple.com/us/app/feeeed/id1600187490' className={[styles.downloadIcon, styles['buzz-on-hover']].join(' ')}>
     Download
     <img src='/Heart.svg' />
   </a>
