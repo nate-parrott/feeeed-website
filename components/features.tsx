@@ -52,7 +52,7 @@ const Features = () => {
             </div>
 
             <div className={[styles.card, styles.healthRed].join(' ')}>
-                <Image src='/Cards/Health.png' width={400} height={388} />
+                <Image alt='' src='/Cards/Health.png' width={400} height={388} />
                 <h1 style={{marginTop: '0.3em'}}>Get reminders to reach 10k steps each day</h1>
             </div>
 
