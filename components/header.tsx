@@ -6,7 +6,7 @@ function Header() {
         <header className={styles.header}>
             <a href='/'>
                 <div className={styles.logo2}>
-                    <Image src='/Icon.png' width={128} height={128} />
+                    <Image alt='' src='/Icon.png' width={128} height={128} />
                 </div>
             </a>
             <a href='/'>
