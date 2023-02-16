@@ -3,6 +3,8 @@ import Head from 'next/head'
 import styles from '../../styles/recs.module.css'
 import { PreviewStory, RecommendationsList, Subscription, useRecs } from '../api/recs';
 import { useRouter } from 'next/router';
+import { download } from '../api/download';
+import { generateOPML } from '../api/opml';
 
 const RecView = ({rec}: {rec: RecommendationsList}) => {
     const subParts = subtitleParts(rec);
@@ -53,10 +55,13 @@ function titleForRec(rec: RecommendationsList) {
 }
 
 const ActionButtons = ({rec}: {rec: RecommendationsList}) => {
+    function downloadOPML() {
+        download(generateOPML(rec), 'text/xml');
+    }
     return (
         <div className={styles.actionButtons}>
-            <a href="#" className={styles.primaryButton}>Follow on Feeeed</a>
-            <a href="#" className={styles.secondaryButton}>Download OPML</a>
+            <a href={"feeeed://recommendations?id=" + rec.id} className={styles.primaryButton}>Follow on Feeeed</a>
+            <a href="#" onClick={downloadOPML} className={styles.secondaryButton}>Download OPML</a>
         </div>
     )
 };
