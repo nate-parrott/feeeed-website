@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styles from '../styles/recs.module.css'
-import { PreviewStory, RecommendationsList, Subscription } from './api/recs';
-import { DEMO_REC } from './api/demoRecs';
+import styles from '../../styles/recs.module.css'
+import { PreviewStory, RecommendationsList, Subscription, useRecs } from '../api/recs';
+import { useRouter } from 'next/router';
 
 const RecView = ({rec}: {rec: RecommendationsList}) => {
     const subParts = subtitleParts(rec);
@@ -11,15 +11,8 @@ const RecView = ({rec}: {rec: RecommendationsList}) => {
         <>
             <Head>
                 <title>{titleForRec(rec)}</title>
-                <link rel="icon" href="/Icon.png" />
-                <style jsx global>{`
-        body {
-            background-color: #F5F4F2;
-        }
-    `}</style>
-
             </Head>
-
+            
             <div className={styles.root}>
                 <div className={styles.header}>
                     { rec.title && <h1>{rec.title}</h1> }
@@ -98,7 +91,20 @@ const PreviewCard = ({preview}: {preview: PreviewStory}) => (
 const PreviewCardPlaceholder = () => <div className={styles.previewCardPlaceholder} />;
 
 const Recs: NextPage = () => {
-    return <RecView rec={DEMO_REC} />;
+    const router = useRouter()
+    const id = router.query.id as string
+
+    const recs = useRecs(id);
+    return (
+        <>
+        <Head>
+                <link rel="icon" href="/Icon.png" />
+                <style jsx global>{` body { background-color: #F5F4F2; } `}</style>
+        </Head>
+
+        {recs && <RecView rec={recs} />}
+    </>
+    );
 }
 
 export default Recs;

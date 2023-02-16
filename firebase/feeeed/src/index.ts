@@ -1,16 +1,15 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
+import { deleteUndefines } from "./utils";
 
 admin.initializeApp();
 
-// // Start writing functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
-
+/* 
+Changes to this model must be made in three places: 
+- /pages/api/recs.ts
+- firebase/feeeed/src/index.ts
+- RecommendationsList.swift
+*/
 interface RecommendationsList {
     id: string;
     title?: string;
@@ -23,7 +22,7 @@ interface RecommendationsListFirebaseDoc {
     title?: string;
     description?: string;
     creator?: string;
-    subscriptions: string;
+    subscriptionsJson: string;
 }
 
 export const upload = functions.https.onRequest((request, response) => {
@@ -33,14 +32,19 @@ export const upload = functions.https.onRequest((request, response) => {
     const db = admin.firestore();
     // Assign doc with new id:
     const docRef = db.collection('recommendations').doc();
-    const docData: RecommendationsListFirebaseDoc = {
+    let docData: RecommendationsListFirebaseDoc = {
         title: recommendationsList.title,
         description: recommendationsList.description,
         creator: recommendationsList.creator,
-        subscriptions: JSON.stringify(recommendationsList.subscriptions),
+        subscriptionsJson: JSON.stringify(recommendationsList.subscriptions),
     };
+    docData = deleteUndefines(docData);
     const docId = docRef.id;
     docRef.set(docData).then(() => {
         response.send({id: docId});
     });
+});
+
+export const helloWorld = functions.https.onRequest((request, response) => {
+    response.send("Hello from Firebase!");
 });

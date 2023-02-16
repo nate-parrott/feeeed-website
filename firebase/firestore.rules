@@ -1,10 +1,11 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow anyone to create or read a `recommendations` document, but do not allow modifications of existing documents.
+    // Allow anyone to read (but not list) from `recommendations`, but do not allow writes.
     match /recommendations/{document=**} {
-      allow create, read: if true;
-      allow update, delete: if false;
+      allow get: if true;
+      allow list: if false;
+      allow write: if false;
     }
     
     match /{document=**} {
