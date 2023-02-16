@@ -45,6 +45,28 @@ export const upload = functions.https.onRequest((request, response) => {
     });
 });
 
+export const download = functions.https.onRequest((request, response) => {
+    const db = admin.firestore();
+    const docId = request.query.id as string;
+    const docRef = db.collection('recommendations').doc(docId);
+    docRef.get().then((doc) => {
+        if (doc.exists) {
+            const docData = doc.data() as RecommendationsListFirebaseDoc;
+            const subscriptions = JSON.parse(docData.subscriptionsJson) as any[];
+            const recommendationsList: RecommendationsList = {
+                id: docId,
+                title: docData.title,
+                description: docData.description,
+                creator: docData.creator,
+                subscriptions,
+            };
+            response.send(recommendationsList);
+        } else {
+            response.status(404).send('Not found');
+        }
+    });
+});
+
 export const helloWorld = functions.https.onRequest((request, response) => {
     response.send("Hello from Firebase!");
 });

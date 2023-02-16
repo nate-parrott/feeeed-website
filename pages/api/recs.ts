@@ -61,11 +61,6 @@ export interface Color {
 interface FirebaseStringField {
     stringValue: string;
 }
-interface FirebaseRecord {
-    fields: {
-        [key: string]: FirebaseStringField;
-    }
-}
 
 function parseRecs(data: any, id: string): RecommendationsList | undefined {
     if (!data || !data.fields) {
