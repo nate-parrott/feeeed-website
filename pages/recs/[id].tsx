@@ -26,7 +26,7 @@ const RecView = ({rec}: {rec: RecommendationsList}) => {
                 </div>
                 <div className={styles.grid}>
                     {rec.subscriptions.map(sub => 
-                    <SubscriptionRow key={sub.id} sub={sub} />
+                    <SubscriptionRow key={sub.id} sub={sub} recsId={rec.id} />
                     ) }
                 </div>
             </div>
@@ -69,7 +69,8 @@ const ActionButtons = ({rec}: {rec: RecommendationsList}) => {
     )
 };
 
-const SubscriptionRow = ({sub}: {sub: Subscription}) => {
+const SubscriptionRow = ({sub, recsId}: {sub: Subscription, recsId: string}) => {
+    const subFollowLink = `feeeed://recommendations?id=${recsId}&focus=${sub.id}`;
     return (
         <div className={styles.subscriptionRow}>
             {sub.preview ? <PreviewCard preview={sub.preview} /> : <PreviewCardPlaceholder />}
@@ -78,7 +79,7 @@ const SubscriptionRow = ({sub}: {sub: Subscription}) => {
                 {sub.displaySubtitle && <p>{sub.displaySubtitle}</p>}
                 <div className={styles.subscriptionActions}>
                     {sub.webLink && <a className={styles.secondaryButton} href={sub.webLink} target='_blank'>Website</a> }
-                    <a href="#" className={styles.primaryButton}>Follow</a>
+                    <a href={subFollowLink} className={styles.primaryButton}>Follow</a>
                 </div>
             </div>
         </div>
