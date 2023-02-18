@@ -1,24 +1,27 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../../styles/recs.module.css'
-import { PreviewStory, RecommendationsList, Subscription, useRecs } from '../api/recs';
+import { fetchRecs, PreviewStory, RecommendationsList, Subscription, useRecs } from '../api/recs';
 import { useRouter } from 'next/router';
 import { download } from '../api/download';
 import { generateOPML } from '../api/opml';
 
 const RecView = ({rec}: {rec: RecommendationsList}) => {
     const subParts = subtitleParts(rec);
+    const subtitle = subParts.join(' · ');
 
     return (
         <>
             <Head>
                 <title>{titleForRec(rec)}</title>
+                <meta name="description" content="A list of feeds" />
+                <meta property="og:image" content="https://feeeed.nateparrott.com/RecsOG.jpg" />
             </Head>
             
             <div className={styles.root}>
                 <div className={styles.header}>
                     { rec.title && <h1>{rec.title}</h1> }
-                    { subParts.length > 0 && <h2>{subParts.join(' · ')}</h2> }
+                    { subParts.length > 0 && <h2>{subtitle}</h2> }
                     <ActionButtons rec={rec} />
                 </div>
                 <div className={styles.grid}>
@@ -95,11 +98,16 @@ const PreviewCard = ({preview}: {preview: PreviewStory}) => (
 
 const PreviewCardPlaceholder = () => <div className={styles.previewCardPlaceholder} />;
 
-const Recs: NextPage = () => {
-    const router = useRouter()
-    const id = router.query.id as string
+interface Props {
+    serverData?: RecommendationsList;
+}
 
-    const recs = useRecs(id);
+const Recs: NextPage = (props: Props) => {
+    const router = useRouter()
+    const id = router.query.id as string;
+    const { serverData } = props;
+
+    const recs = useRecs(id) ?? serverData;
     return (
         <>
         <Head>
@@ -110,6 +118,14 @@ const Recs: NextPage = () => {
         {recs && <RecView rec={recs} />}
     </>
     );
+}
+
+export async function getServerSideProps(context: any) {
+    const { id } = context.query;
+    const recs = await fetchRecs(id);
+    return {
+        props: { serverData: recs }
+    };
 }
 
 export default Recs;

@@ -80,19 +80,20 @@ function parseRecs(data: any, id: string): RecommendationsList | undefined {
 export function useRecs(id: string): RecommendationsList | undefined {
     const [recs, setRecs] = useState<RecommendationsList | undefined>(undefined);
     useEffect(() => {
-        // Fetch from Firebase firestore (project feeeed-aae7c) via REST API
-        if (id === 'demo') {
-            setRecs(DEMO_REC);
-            return;
-        }
-        if (!id) { return; }
-        // Call firestore rest api
-        fetch(`https://firestore.googleapis.com/v1/projects/feeeed-aae7c/databases/(default)/documents/recommendations/${id}`)
-            .then((response) => response.json())
-            .then((data) => {
-                const recs = parseRecs(data, id);
+        fetchRecs(id).then((recs) => {
+            if (recs) {
                 setRecs(recs);
-            });
+            }
+        });
     }, [id]);
     return recs;
+}
+
+export function fetchRecs(id: string): Promise<RecommendationsList | undefined> {
+    if (id === 'demo') {
+        return Promise.resolve(DEMO_REC);
+    }
+    return fetch(`https://firestore.googleapis.com/v1/projects/feeeed-aae7c/databases/(default)/documents/recommendations/${id}`)
+        .then((response) => response.json())
+        .then((data) => parseRecs(data, id));
 }
