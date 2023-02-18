@@ -14,6 +14,7 @@ const RecView = ({rec}: {rec: RecommendationsList}) => {
         <>
             <Head>
                 <title>{titleForRec(rec)}</title>
+                <meta property="og:title" content={rec.title || "Feeds from feeeed"} />
                 <meta name="description" content="A list of feeds" />
                 <meta property="og:image" content="https://feeeed.nateparrott.com/RecsOG.jpg" />
             </Head>
