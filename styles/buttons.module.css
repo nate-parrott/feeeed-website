@@ -1,0 +1,28 @@
+/* BUTTONS */
+
+.primaryButton, .secondaryButton {
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 2em;
+    display: inline-block;
+    font-weight: 600;
+    cursor: default;
+    letter-spacing: -0.01em;
+    /* transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out, opacity 0.1s ease-in-out;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform: translateY(0); */
+}
+.primaryButton:hover, .secondaryButton:hover {
+    /* transform: translateY(-2px); */
+    /* box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1), 0px 1px 4px rgba(0, 0, 0, 0.12); */
+    /* opacity: 0.7; */
+    opacity: 0.7;
+}
+
+.primaryButton {
+    background-color: #1A1A39;
+    color: #F5F4F2;
+}
+.secondaryButton {
+    background-color: rgba(26, 26, 57, 0.15);
+}

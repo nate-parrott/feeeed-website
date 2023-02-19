@@ -1,9 +1,14 @@
+// Downloads the content as a file
 export function download(file: string, mimeType: string) {
-    // Download this file using the browser's apis
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([file], {type: mimeType}));
-    a.setAttribute('download', 'feeeed.opml');
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+
+    const blob = new Blob([file], { type: mimeType });
+    
+    const link = document.createElement('a');
+    link.style.display = 'none';
+    link.href = URL.createObjectURL(blob);
+    link.download = 'feeeed.opml';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
+

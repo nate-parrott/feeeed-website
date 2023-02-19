@@ -1,14 +1,23 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../../styles/recs.module.css'
-import { fetchRecs, PreviewStory, RecommendationsList, Subscription, useRecs } from '../api/recs';
+import buttonStyles from '../../styles/buttons.module.css'
+import { fetchRecs, RecommendationsList, useRecs } from '../api/recs';
 import { useRouter } from 'next/router';
 import { download } from '../api/download';
 import { generateOPML } from '../api/opml';
+import { subtitlePartsForRec, titleForRec } from '../api/recHelpers';
+import { SubscriptionRow } from '../../components/recs/SubscriptionRow';
+import { removeUndefinedFields } from '../../utils/utils';
+import { DownloadAppBar } from '../../components/recs/DownloadAppBar';
+import { useState } from 'react';
 
 const RecView = ({rec}: {rec: RecommendationsList}) => {
-    const subParts = subtitleParts(rec);
+    const subParts = subtitlePartsForRec(rec);
     const subtitle = subParts.join(' · ');
+
+    const [showingDownloadBar, setShowingDownloadBar] = useState(false);
+    const showDownloadBar = () => setTimeout(() => setShowingDownloadBar(true), 1000);
 
     return (
         <>
@@ -20,14 +29,15 @@ const RecView = ({rec}: {rec: RecommendationsList}) => {
             </Head>
             
             <div className={styles.root}>
+                { showingDownloadBar && <DownloadAppBar dismiss={() => setShowingDownloadBar(true)} /> }
                 <div className={styles.header}>
                     { rec.title && <h1>{rec.title}</h1> }
                     { subParts.length > 0 && <h2>{subtitle}</h2> }
-                    <ActionButtons rec={rec} />
+                    <ActionButtons rec={rec} showDownloadBar={showDownloadBar} />
                 </div>
                 <div className={styles.grid}>
                     {rec.subscriptions.map(sub => 
-                    <SubscriptionRow key={sub.id} sub={sub} recsId={rec.id} />
+                    <SubscriptionRow key={sub.id} sub={sub} recsId={rec.id} showDownloadBar={showDownloadBar} />
                     ) }
                 </div>
             </div>
@@ -35,70 +45,17 @@ const RecView = ({rec}: {rec: RecommendationsList}) => {
     )
 };
 
-function subtitleParts(rec: RecommendationsList): string[] {
-    let parts: string[] = [];
-    if (rec.description) {
-        parts.push(rec.description);
-    }
-    if (rec.creator) {
-        parts.push(`by ${rec.creator}`);
-    }
-    return parts;
-}
-
-function titleForRec(rec: RecommendationsList) {
-    let parts: string[] = [];
-    if (rec.title) {
-        parts.push(rec.title);
-    }
-    if (rec.creator) {
-        parts.push(`a list of feeds by ${rec.creator}`);
-    }
-    parts.push('feeeed app');
-    return parts.join(' | ');
-}
-
-const ActionButtons = ({rec}: {rec: RecommendationsList}) => {
+const ActionButtons = ({rec, showDownloadBar}: {rec: RecommendationsList, showDownloadBar: () => void}) => {
     function downloadOPML() {
         download(generateOPML(rec), 'text/xml');
     }
     return (
         <div className={styles.actionButtons}>
-            <a href={"feeeed://recommendations?id=" + rec.id} className={styles.primaryButton}>Follow on Feeeed</a>
-            <a href="#" onClick={downloadOPML} className={styles.secondaryButton}>Download OPML</a>
+            <a href={"feeeed://recommendations?id=" + rec.id} onClick={showDownloadBar} className={buttonStyles.primaryButton}>Follow on Feeeed</a>
+            <a href="#" onClick={downloadOPML} className={buttonStyles.secondaryButton}>Download OPML</a>
         </div>
     )
 };
-
-const SubscriptionRow = ({sub, recsId}: {sub: Subscription, recsId: string}) => {
-    const subFollowLink = `feeeed://recommendations?id=${recsId}&focus=${sub.id}`;
-    return (
-        <div className={styles.subscriptionRow}>
-            {sub.preview ? <PreviewCard preview={sub.preview} /> : <PreviewCardPlaceholder />}
-            <div className={styles.subscriptionInfo}>
-                {sub.displayTitle && <h3>{sub.displayTitle}</h3>}
-                {sub.displaySubtitle && <p>{sub.displaySubtitle}</p>}
-                <div className={styles.subscriptionActions}>
-                    {sub.webLink && <a className={styles.secondaryButton} href={sub.webLink} target='_blank'>Website</a> }
-                    <a href={subFollowLink} className={styles.primaryButton}>Follow</a>
-                </div>
-            </div>
-        </div>
-    )
-};
-
-const PreviewCard = ({preview}: {preview: PreviewStory}) => (
-    // Show a clickable card with image and title
-    <a className={styles.previewCard} href={preview.url}>
-        {
-            preview.imageUrl && <img src={preview.imageUrl} alt="" />
-        }
-        <label><div>{preview.title ?? ""}</div></label>
-        <label className={styles.previewCardSubtitle} aria-hidden={true}>Lorem ipsum dolor sit amet lorem ipsum</label>
-    </a>
-);
-
-const PreviewCardPlaceholder = () => <div className={styles.previewCardPlaceholder} />;
 
 interface Props {
     serverData?: RecommendationsList;
@@ -126,7 +83,7 @@ export async function getServerSideProps(context: any) {
     const { id } = context.query;
     const recs = await fetchRecs(id);
     return {
-        props: { serverData: recs }
+        props: { serverData: recs ? removeUndefinedFields(recs) : null }
     };
 }
 

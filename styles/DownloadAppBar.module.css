@@ -1,0 +1,36 @@
+.container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, #F5F4F2 0%, #EFEBEA 100%);
+    box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.12), 0px 0px 2px rgba(0, 0, 0, 0.08);
+
+    z-index: 100;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.inner {
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 700px;
+    flex-grow: 1;
+    padding: 0.5em 1em;
+}
+.spacer {
+    flex: 1;
+}
+.container h3 {
+    margin-right: 0.5em;
+}
+.icon {
+    width: 2.5em;
+    height: 2.5em;
+    display: block;
+    margin-right: 1em;
+}

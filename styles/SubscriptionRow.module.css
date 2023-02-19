@@ -1,0 +1,123 @@
+
+.subscriptionRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1em;
+    transition: background-color 0.12s linear;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    border-radius: 1.5em;
+}
+
+.subscriptionRow:hover {
+    background-color: rgba(26, 26, 57, 0.05);
+}
+
+.subscriptionInfo {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 2em;
+}
+
+.subscriptionInfo > * {
+    margin: 0;
+}
+
+.subscriptionInfo p {
+    margin-top: 0.5em;
+    opacity: 0.5;
+    margin-bottom: 0.2em;
+}
+
+.subscriptionActions > * {
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    font-size: 0.9em;
+}
+
+/* PREVIEW CARDS */
+
+.previewCard {
+    position: relative;
+    background: #FCFBFB;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 2px 8px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform: scale(1.001);
+    transform-origin: 50% 66%;
+}
+
+@media screen and (min-width: 600px) {
+    .subscriptionRow:hover .previewCard {
+        transform: scale(1.05);
+        box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 2px 8px rgba(0, 0, 0, 0.12), 0px 4px 16px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.previewCardPlaceholder, .previewCard {
+    width: 8em;
+    height: 8em;
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 600px) {
+    .previewCardPlaceholder, .previewCard {
+        flex-shrink: 0;;
+        transform: scale(0.7);
+        transform-origin: left;
+        margin-right: -3em;
+        margin-top: -1em;
+        margin-bottom: -1em;
+    }
+}
+
+.previewCardPlaceholder {
+    background-color: rgba(0,0,0,0.07);
+}
+
+.previewCard img {
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 1em;
+}
+.previewCard:not(:has(img)) {
+    padding: 0.5em;
+}
+.previewCard:has(img) label {
+    background-color: #FCFBFB;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    padding: 0.8em;
+    padding-top: 0.6em;
+}
+.previewCard label div {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.previewCard:not(:has(img)) label div {
+    -webkit-line-clamp: 3;
+}
+.previewCard label {
+    font-weight: bold;
+    font-size: 0.8em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+}
+.previewCard:has(img) .previewCardSubtitle {
+    display: none;
+}
+.previewCardSubtitle {
+    font-family: "Redacted" !important;
+    opacity: 0.1;
+}

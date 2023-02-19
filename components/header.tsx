@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { APP_STORE_LINK } from "../pages/api/links";
 import styles from '../styles/Header.module.css'
 
 function Header() {
@@ -13,7 +14,7 @@ function Header() {
                 <h2>feeeed</h2>
             </a>
             <div className={styles.spacer} />
-            <a className={styles.download} href='https://testflight.apple.com/join/ixRrWfQL'>Download</a>
+            <a className={styles.download} href={APP_STORE_LINK}>Download</a>
         </header>
     )
 }

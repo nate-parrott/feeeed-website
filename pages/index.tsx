@@ -7,6 +7,7 @@ import Base from '../components/base'
 import Features from '../components/features'
 import Header from '../components/header'
 import styles from '../styles/Home.module.css'
+import { APP_STORE_LINK, TESTFLIGHT_LINK } from './api/links'
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -46,7 +47,7 @@ const Home: NextPage = () => {
       <footer className={styles.footer}>
           <Link href='/privacy'>Privacy</Link>
           <Link href='/terms'>Terms</Link>
-          <Link href='https://testflight.apple.com/join/ixRrWfQL'>Beta</Link>
+          <Link href={TESTFLIGHT_LINK}>Beta</Link>
           <DownloadIcon />
       </footer>
     </div>
@@ -68,7 +69,7 @@ const SplashCTA = ({hidden}: {hidden?: boolean}) => (
 )
 
 const DownloadIcon = () => (
-  <a href='https://apps.apple.com/us/app/feeeed/id1600187490' className={[styles.downloadIcon, styles['buzz-on-hover']].join(' ')}>
+  <a href={APP_STORE_LINK} className={[styles.downloadIcon, styles['buzz-on-hover']].join(' ')}>
     Download
     <img src='/Heart.svg' />
   </a>
