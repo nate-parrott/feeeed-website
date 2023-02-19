@@ -7,6 +7,8 @@
     transition: background-color 0.12s linear;
     transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
     border-radius: 1.5em;
+    user-select: none;
+    margin-bottom: 1em;
 }
 
 .subscriptionRow:hover {
@@ -22,6 +24,7 @@
 
 .subscriptionInfo > * {
     margin: 0;
+    font-weight: 600;
 }
 
 .subscriptionInfo p {
@@ -33,7 +36,12 @@
 .subscriptionActions > * {
     margin-right: 0.5em;
     margin-top: 0.5em;
-    font-size: 0.9em;
+}
+
+@media screen and (max-width: 600px) {
+    .subscriptionActions > * {
+        font-size: 0.8em;   
+    } 
 }
 
 /* PREVIEW CARDS */

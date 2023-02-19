@@ -10,8 +10,8 @@
 
 @media screen and (max-width: 600px) {
     .root {
-        font-size: 14px;
-        padding: 1.2em;
+        font-size: 16px;
+        padding: 1.5em;
     }
 }
 
@@ -31,15 +31,26 @@
 .header h2 {
     font-size: 1.25em;
     font-weight: 500;   
+    opacity: 0.5;
 }
 
 .actionButtons {
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin-top: 1.2em;
+    margin-left: -0.5em;
+    margin-right: -0.5em;
 }
 
 .actionButtons > * {
-    margin-right: 1em;
+    margin: 0.3em;
+}
+
+.footer {
+    opacity: 0.5;
+}
+
+.footer a {
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 600px) {

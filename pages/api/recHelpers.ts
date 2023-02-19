@@ -8,6 +8,13 @@ export function subtitlePartsForRec(rec: RecommendationsList): string[] {
     if (rec.creator) {
         parts.push(`by ${rec.creator}`);
     }
+    if (parts.length === 0 && rec.subscriptions.length) {
+        if (rec.subscriptions.length === 1) {
+            parts.push(`One feed`);
+        } else {
+            parts.push(`A list of ${rec.subscriptions.length} feeds`);
+        }
+    }
     return parts;
 }
 

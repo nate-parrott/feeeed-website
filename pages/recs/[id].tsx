@@ -40,6 +40,9 @@ const RecView = ({rec}: {rec: RecommendationsList}) => {
                     <SubscriptionRow key={sub.id} sub={sub} recsId={rec.id} showDownloadBar={showDownloadBar} />
                     ) }
                 </div>
+                <div className={styles.footer}>
+                    This list of news feeds was created by a <a href="https://feeeed.nateparrott.com">feeeed</a> user.
+                </div>
             </div>
         </>
     )
