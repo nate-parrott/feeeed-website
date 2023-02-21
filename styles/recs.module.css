@@ -28,6 +28,7 @@
     color: orange;
     margin-bottom: 0;
 } 
+
 .header h2 {
     font-size: 1.25em;
     font-weight: 500;   
@@ -55,7 +56,7 @@
 
 @media screen and (max-width: 600px) {
     .root h1 {
-        font-size: 3em;
+        font-size: 2.2em;
     }
     .actionButtons {
         font-size: 1em;

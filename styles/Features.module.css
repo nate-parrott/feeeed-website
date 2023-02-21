@@ -26,6 +26,11 @@
     }
 }
 
+.featureGrid img {
+    width: 100%;
+    height: auto;
+}
+
 .card {
     width: 20em;
 

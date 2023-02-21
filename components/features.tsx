@@ -1,5 +1,10 @@
 import styles from '../styles/Features.module.css'
-import Image from 'next/image'
+// import Image from 'next/image'
+
+interface ImageProps {
+    src: string; alt: string; width: number; height: number;
+}
+const Image = ({src, alt, width, height}: ImageProps) => <img src={src} alt={alt} width={width} height={height} />;
 
 const Features = () => {
     return (
@@ -22,10 +27,10 @@ const Features = () => {
                 <Image alt='' src='/Cards/Reader.png' width={400} height={469} />
             </div>
 
-            <div className={[styles.card, styles.twitterBlue].join(' ')}>
+            {/* <div className={[styles.card, styles.twitterBlue].join(' ')}>
                 <Image alt='' src='/Cards/Twitter.png' width={400} height={319} />
                 <h1 style={{marginTop: '0.5em'}}>Links from people you follow on Twitter, sorted by number of shares</h1>
-            </div>
+            </div> */}
 
             <div className={[styles.card, styles.dark].join(' ')}>
                 <h1>Customizable Widgets</h1>
