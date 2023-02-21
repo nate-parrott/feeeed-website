@@ -51,15 +51,15 @@
     background: #FCFBFB;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 2px 8px rgba(0, 0, 0, 0.12);
     overflow: hidden;
-    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
     transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
-    transform: scale(1.001);
+    transform: scale(1.001) rotate3d(0, 0, 1, 0.01deg);
     transform-origin: 50% 66%;
 }
 
 @media screen and (min-width: 600px) {
     .subscriptionRow:hover .previewCard {
-        transform: scale(1.05);
+        transform: scale(1.05) rotate3d(0, 0, 1, 3deg);
         box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 2px 8px rgba(0, 0, 0, 0.12), 0px 4px 16px rgba(0, 0, 0, 0.12);
     }
 }
