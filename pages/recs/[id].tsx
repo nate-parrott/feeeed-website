@@ -31,7 +31,7 @@ const RecView = ({rec}: {rec: RecommendationsList}) => {
                 <meta name="twitter:creator" content="@nateparrott" />
                 <meta name="twitter:title" content={rec.title || "Feeds from feeeed"} />
                 <meta name="twitter:description" content="A list of feeds" />
-                <meta name="twitter:image" content="https://feeeed.nateparrott.com/RecsOG.jpg" />
+                <meta name="twitter:image" content="https://feeeed.nateparrott.com/RecsOGSquare.jpg" />
             </Head>
             
             <div className={styles.root}>
