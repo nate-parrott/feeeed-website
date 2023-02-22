@@ -26,6 +26,12 @@ const RecView = ({rec}: {rec: RecommendationsList}) => {
                 <meta property="og:title" content={rec.title || "Feeds from feeeed"} />
                 <meta name="description" content="A list of feeds" />
                 <meta property="og:image" content="https://feeeed.nateparrott.com/RecsOG.jpg" />
+                <meta name="twitter:card" content="summary" />
+                <meta name="twitter:site" content="@nateparrott" />
+                <meta name="twitter:creator" content="@nateparrott" />
+                <meta name="twitter:title" content={rec.title || "Feeds from feeeed"} />
+                <meta name="twitter:description" content="A list of feeds" />
+                <meta name="twitter:image" content="https://feeeed.nateparrott.com/RecsOG.jpg" />
             </Head>
             
             <div className={styles.root}>

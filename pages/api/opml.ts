@@ -26,11 +26,13 @@ export function generateOPML(recommendationsList: RecommendationsList): string {
     opmlRoot.appendChild(head);
     const body = opml.createElement('body');
     for (const subscription of recommendationsList.subscriptions) {
-        const outline = opml.createElement('outline');
-        outline.setAttribute('type', 'rss');
-        outline.setAttribute('title', subscription.displayTitle);
-        outline.setAttribute('xmlUrl', subscription.asRss || subscription.webLink || '');
-        body.appendChild(outline);
+        if (subscription.asRss) {
+            const outline = opml.createElement('outline');
+            outline.setAttribute('type', 'rss');
+            outline.setAttribute('title', subscription.displayTitle);
+            outline.setAttribute('xmlUrl', subscription.asRss);
+            body.appendChild(outline);    
+        }
     }
     opmlRoot.appendChild(body);
     return new XMLSerializer().serializeToString(opml);
