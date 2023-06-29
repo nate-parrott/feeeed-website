@@ -63,6 +63,8 @@ const Privacy: NextPage = () => {
 <p>We don’t knowingly collect or solicit information from anyone under the age of 18. If you are under the age of 18, please do not use the service or send us any personal information.
 </p>
 
+<YouTubeDisclosure />
+
 <h4>Updating this policy
 </h4>
 
@@ -89,5 +91,26 @@ const GoogleDisclosure = () => (
      Specifically, the app does not transfer any information received from Google APIs to any other service or device, under any condition.
   </p>
 )
+
+const YouTubeDisclosure = () => (
+  <>
+    <h4 id="youtube">Use of YouTube integration</h4>
+      <p>
+        feeeed includes an optional YouTube integration. 
+        This integration allows you to search and subscribe to YouTube channels
+        within the app.
+    </p>
+    <p>
+      Users of the YouTube integration are subject to the <a href='http://www.google.com/policies/privacy'>Google Privacy Policy.</a>
+    </p>
+    <p>
+      When you tap 'Search YouTube channels' within the app, your search query is transmitted to YouTube and the results are displayed within the app.
+      Any subscriptions you make are stored locally within the app.
+    </p>
+    <p>
+      feeeed does not collect, store or share with third parties any information related to your YouTube activity within the app.
+    </p>
+  </>
+);
 
 export default Privacy;

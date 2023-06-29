@@ -89,6 +89,13 @@ const Terms: NextPage = () => {
 <h1>Translation Interpretation</h1>
 <p>These Terms and Conditions may have been translated if We have made them available to You on our Service.
 You agree that the original English text shall prevail in the case of a dispute.</p>
+<h1 id="youtube">
+  Use of YouTube API Services
+</h1>
+<p>
+  The application includes optional YouTube search and subscription functionality.
+  By using this functionality, you agree to be bound by the <a href='https://www.youtube.com/t/terms'>YouTube Terms of Service.</a>
+</p>
 <h1>Changes to These Terms and Conditions</h1>
 <p>We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion.</p>
 <p>By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the website and the Service.</p>
