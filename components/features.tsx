@@ -12,7 +12,7 @@ const Features = () => {
 
             <div className={[styles.card, styles.red].join(' ')}>
                 <h1>Follow almost any website</h1>
-                <p>Subscribe via RSS or Twitter</p>
+                <p>Subscribe via RSS, Youtube, Reddit or email</p>
                 <Image alt='' src='/Cards/FollowAnySite.png' width={400} height={369} />
             </div>
 
