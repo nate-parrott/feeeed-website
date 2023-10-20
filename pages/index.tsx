@@ -1,13 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect } from 'react'
-import Base from '../components/base'
 import Features from '../components/features'
-import Header from '../components/header'
 import styles from '../styles/Home.module.css'
 import { APP_STORE_LINK, TESTFLIGHT_LINK } from './api/links'
+import { Analytics } from '@vercel/analytics/react';
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -24,6 +22,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/Icon.png" />
         <meta name="theme-color" content="#AAC9F5" />
         <meta name="apple-itunes-app" content="app-id=1600187490" />
+        <Analytics />
       </Head>
 
 

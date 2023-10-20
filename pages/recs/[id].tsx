@@ -11,6 +11,7 @@ import { SubscriptionRow } from '../../components/recs/SubscriptionRow';
 import { removeUndefinedFields } from '../../utils/utils';
 import { DownloadAppBar } from '../../components/recs/DownloadAppBar';
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 const RecView = ({rec}: {rec: RecommendationsList}) => {
     const subParts = subtitlePartsForRec(rec);
@@ -32,6 +33,7 @@ const RecView = ({rec}: {rec: RecommendationsList}) => {
                 <meta name="twitter:title" content={rec.title || "Feeds from feeeed"} />
                 <meta name="twitter:description" content="A list of feeds" />
                 <meta name="twitter:image" content="https://feeeed.nateparrott.com/RecsOGSquare.jpg" />
+                <Analytics />
             </Head>
             
             <div className={styles.root}>
