@@ -14,7 +14,7 @@ const Test: NextPage = () => {
 
         <Base>
             <article>
-                <img style={{width: '100%'}} src="/bird.jpg" alt="Parakeet" />
+                {/* <img style={{width: '100%'}} src="/bird.jpg" alt="Parakeet" /> */}
             <h1>Paradoxically, Parakeets Prefer Parkour</h1>
         <p>In a surprising turn of events, our local parakeets have been spotted embracing their inner daredevils and taking up an unexpected hobby – parkour!</p>
 
