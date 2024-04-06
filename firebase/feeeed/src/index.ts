@@ -1,10 +1,11 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import { deleteUndefines } from "./utils";
+import { notifyHandler } from "./notifs";
 
 admin.initializeApp();
 
-/* 
+/*
 Changes to this model must be made in three places: 
 - /pages/api/recs.ts
 - firebase/feeeed/src/index.ts
@@ -70,3 +71,5 @@ export const download = functions.https.onRequest((request, response) => {
 export const helloWorld = functions.https.onRequest((request, response) => {
     response.send("Hello from Firebase!");
 });
+
+export const notify = functions.https.onRequest(notifyHandler);

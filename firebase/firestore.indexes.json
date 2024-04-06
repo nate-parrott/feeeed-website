@@ -1,4 +1,20 @@
 {
-  "indexes": [],
+  "indexes": [
+    {
+      "collectionGroup": "notif_subs",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+      {
+      "fieldPath": "shard",
+      "order": "ASCENDING"
+      },
+      {
+      "fieldPath": "shard",
+      "order": "DESCENDING"
+      }
+    ]
+  }
+
+  ],
   "fieldOverrides": []
 }
