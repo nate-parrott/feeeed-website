@@ -1,7 +1,8 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
 import { deleteUndefines } from "./utils";
-import { notifyHandler } from "./notifs";
+import { notify, notifyAllHandler } from "./notifs";
+import { onSchedule } from "firebase-functions/v2/scheduler";
 
 admin.initializeApp();
 
@@ -72,4 +73,18 @@ export const helloWorld = functions.https.onRequest((request, response) => {
     response.send("Hello from Firebase!");
 });
 
-export const notify = functions.https.onRequest(notifyHandler);
+// export const notifyAll = functions.https.onRequest(notifyAllHandler);
+
+// Use 10 shards running every hour, offset each by 6 mins
+const N_SHARDS = 10;
+exports.n0 = onSchedule('0 * * * *', async (ctx) => await notify(0, N_SHARDS));
+exports.n1 = onSchedule('6 * * * *', async (ctx) => await notify(1, N_SHARDS));
+exports.n2 = onSchedule('12 * * * *', async (ctx) => await notify(2, N_SHARDS));
+exports.n3 = onSchedule('18 * * * *', async (ctx) => await notify(3, N_SHARDS));
+exports.n4 = onSchedule('24 * * * *', async (ctx) => await notify(4, N_SHARDS));
+exports.n5 = onSchedule('30 * * * *', async (ctx) => await notify(5, N_SHARDS));
+exports.n6 = onSchedule('36 * * * *', async (ctx) => await notify(6, N_SHARDS));
+exports.n7 = onSchedule('42 * * * *', async (ctx) => await notify(7, N_SHARDS));
+exports.n8 = onSchedule('48 * * * *', async (ctx) => await notify(8, N_SHARDS));
+exports.n9 = onSchedule('54 * * * *', async (ctx) => await notify(9, N_SHARDS));
+

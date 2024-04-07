@@ -4,17 +4,40 @@
       "collectionGroup": "notif_subs",
       "queryScope": "COLLECTION_GROUP",
       "fields": [
-      {
-      "fieldPath": "shard",
-      "order": "ASCENDING"
-      },
-      {
-      "fieldPath": "shard",
-      "order": "DESCENDING"
-      }
-    ]
-  }
-
+        {
+          "fieldPath": "shard",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "shard",
+          "order": "DESCENDING"
+        }
+      ]
+    }
   ],
-  "fieldOverrides": []
+  "fieldOverrides": [
+    {
+      "collectionGroup": "notif_subs",
+      "fieldPath": "shard",
+      "ttl": false,
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "DESCENDING",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "arrayConfig": "CONTAINS",
+          "queryScope": "COLLECTION"
+        },
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    }
+  ]
 }
