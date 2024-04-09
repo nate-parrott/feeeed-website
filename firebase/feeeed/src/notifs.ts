@@ -121,7 +121,8 @@ async function notifyFeed(globalId: string, notifSubs: NotifSubWithIds[]): Promi
     if (notifSubs.length === 0) {
         return;
     }
-    const feedItems = await fetchFeedItems(notifSubs[0].notifSub);
+    let feedItems = await fetchFeedItems(notifSubs[0].notifSub);
+    feedItems = clampFeedItemDatesToStartOfHour(feedItems);
     await Promise.all(notifSubs.map(async (notifSub) => {
         const newItems = feedItems.filter((item) => item.timestamp > notifSub.notifSub.lastNotifTimestampGMT);
         if (newItems.length === 0) { return }
@@ -187,3 +188,15 @@ function constructDeeplinkURL(item: FeedItem) {
     return `feed://webviewWithReader?url=${encodeURIComponent(item.url)}`;
 }
 
+// Attempt to fix bug where stories are sometimes sent multiple times in the same hour
+// Remember item.timestamp is in seconds
+function clampFeedItemDatesToStartOfHour(items: FeedItem[]): FeedItem[] {
+    const secondsInHour = 3600;
+    const baseHour = Math.floor(Date.now() / 1000 / secondsInHour) * secondsInHour;
+    return items.map((item) => {
+        return {
+            ...item,
+            timestamp: Math.min(item.timestamp, baseHour),
+        };
+    });
+}
