@@ -14,7 +14,6 @@ const Privacy: NextPage = () => {
 
         <Base>
             <Header />
-            <GoogleDisclosure />
             <h1>Privacy Policy</h1>
             <h2>feeeed’s commitment to privacy</h2>
 
@@ -57,6 +56,8 @@ const Privacy: NextPage = () => {
 <p>As you might expect, if you communicate with us directly, we will keep that information and may use it to improve the app. 
 </p>
 
+<GoogleDisclosure />
+
 <h4>Age limits
 </h4>
 
@@ -84,12 +85,25 @@ const Privacy: NextPage = () => {
 }
 
 const GoogleDisclosure = () => (
-  <p className={styles.callout}>
-     feeeed’s use and transfer to any other app of information received 
-     from Google APIs will adhere to the <a href='https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes'>Google API Services User Data Policy</a>, including the Limited Use 
-     requirements.
-     Specifically, the app does not transfer any information received from Google APIs to any other service or device, under any condition.
-  </p>
+  <>
+        <h4 id="google">Handling of Google user data</h4>
+        <p>
+          If you link your Gmail account to view newsletters in the app, email data is fetched by feeeed on your device and shown to you.
+          Your data is stored only in the app, and protected by the security measures configured on device, like passcode, Face ID and device encryption.
+        </p>
+        <p>
+          Data protection: Google user data is never sent to a server, transferred anywhere or otherwise collected.
+        </p>
+        <p>
+          Retention: data isn't retained by feeeed or any third parties, except as cached on your device. Cached data can be deleted by deleting the app from your device.
+        </p>
+        <p>
+          feeeed’s use of information received 
+          from Google APIs will adhere to the <a href='https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes'>Google API Services User Data Policy</a>, including the Limited Use 
+          requirements.
+          Specifically, the app does not transfer any information received from Google APIs to any other service or device, under any condition.
+        </p>
+  </>
 )
 
 const YouTubeDisclosure = () => (
