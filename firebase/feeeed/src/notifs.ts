@@ -79,6 +79,7 @@ export async function notify(shard: number, shardCount: number) {
         notifSubsByFeedId[notifSub.notifSub.globalFeedId].push(notifSub);
     });
 
+    console.log(`Fetching ${Object.keys(notifSubsByFeedId).length} feeds to notify`);
     await Promise.all(Object.keys(notifSubsByFeedId).map(async (globalFeedId) => {
         try {
             await notifyFeed(globalFeedId, notifSubsByFeedId[globalFeedId]);
@@ -87,6 +88,7 @@ export async function notify(shard: number, shardCount: number) {
             console.error(`Failed to notify feed ${globalFeedId}: ${e}`);
         }
     }));
+    console.log(`Finished`);
 }
 
 function notifSubFromSnapshot(snapshot: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>): NotifSubWithIds | undefined {

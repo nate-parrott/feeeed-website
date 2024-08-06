@@ -5,3 +5,7 @@
 `firebase login`
 
 `npm run serve`
+
+# Deploying
+
+???
