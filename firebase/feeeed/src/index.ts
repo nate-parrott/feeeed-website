@@ -75,8 +75,8 @@ export const helloWorld = functions.https.onRequest((request, response) => {
 
 // export const notifyAll = functions.https.onRequest(notifyAllHandler);
 
-// Use 20 shards running every hour, offset each by 3 mins
-const N_SHARDS = 20;
+// Use 30 shards running every 2 hours, offset each by 3 mins
+const N_SHARDS = 30;
 const TIMEOUT = 9 * 60;
 // exports.n0 = onSchedule({schedule: '0 * * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(0, N_SHARDS));
 // exports.n1 = onSchedule({schedule: '6 * * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(1, N_SHARDS));
@@ -110,5 +110,15 @@ exports.n16 = onSchedule({schedule: '48 0-23/2 * * *', timeoutSeconds: TIMEOUT},
 exports.n17 = onSchedule({schedule: '51 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(17, N_SHARDS));
 exports.n18 = onSchedule({schedule: '54 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(18, N_SHARDS));
 exports.n19 = onSchedule({schedule: '57 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(19, N_SHARDS));
+exports.n20 = onSchedule({schedule: '0 1-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(20, N_SHARDS));
+exports.n21 = onSchedule({schedule: '3 1-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(21, N_SHARDS));
+exports.n22 = onSchedule({schedule: '6 1-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(22, N_SHARDS));
+exports.n23 = onSchedule({schedule: '9 1-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(23, N_SHARDS));
+exports.n24 = onSchedule({schedule: '12 1-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(24, N_SHARDS));
+exports.n25 = onSchedule({schedule: '15 1-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(25, N_SHARDS));
+exports.n26 = onSchedule({schedule: '18 1-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(26, N_SHARDS));
+exports.n27 = onSchedule({schedule: '21 1-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(27, N_SHARDS));
+exports.n28 = onSchedule({schedule: '24 1-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(28, N_SHARDS));
+exports.n29 = onSchedule({schedule: '27 1-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(29, N_SHARDS));
 
 // timeoutSeconds
