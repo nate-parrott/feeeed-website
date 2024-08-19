@@ -8,7 +8,7 @@ export interface FeedItem {
 }
 
 export async function fetchFeed(url: string): Promise<FeedItem[]> {
-    const parser = new Parser({timeout: 5000});
+    const parser = new Parser({timeout: 10_000});
     const feed = await parser.parseURL(url);
     // Extract items
     return feed.items.map((item) => {
