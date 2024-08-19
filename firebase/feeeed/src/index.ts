@@ -69,10 +69,6 @@ export const download = functions.https.onRequest((request, response) => {
     });
 });
 
-export const helloWorld = functions.https.onRequest((request, response) => {
-    response.send("Hello from Firebase!");
-});
-
 // export const notifyAll = functions.https.onRequest(notifyAllHandler);
 
 // Use 30 shards running every 2 hours, offset each by 3 mins
@@ -122,3 +118,10 @@ exports.n28 = onSchedule({schedule: '24 1-23/2 * * *', timeoutSeconds: TIMEOUT},
 exports.n29 = onSchedule({schedule: '27 1-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(29, N_SHARDS));
 
 // timeoutSeconds
+
+// DO NOT SUBMIT
+export const helloWorld = functions.https.onRequest((request, response) => {
+    notify(19, N_SHARDS).then(() => {
+        response.send('Test notify completed');
+    });
+});
