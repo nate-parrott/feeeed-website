@@ -18,6 +18,16 @@
   "fieldOverrides": [
     {
       "collectionGroup": "notif_subs",
+      "fieldPath": "globalFeedId",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "notif_subs",
       "fieldPath": "shard",
       "ttl": false,
       "indexes": [
