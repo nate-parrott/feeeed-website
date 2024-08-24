@@ -126,7 +126,7 @@ exports.n9 = onSchedule({schedule: '27 0-23/2 * * *', timeoutSeconds: TIMEOUT}, 
 // timeoutSeconds
 
 // DO NOT SUBMIT
-export const testSend = functions.https.onRequest((request, response) => {
-    notifyFeedWithGlobalId('feed:https://google.com');
-});
+// export const testSend = functions.https.onRequest((request, response) => {
+//     notifyFeedWithGlobalId('feed:https://google.com');
+// });
 

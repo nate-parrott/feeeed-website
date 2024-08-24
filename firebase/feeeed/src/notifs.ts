@@ -91,7 +91,7 @@ export async function notify(shard: number, shardCount: number) {
         if (notifSubs.length === 0) {
             continue;
         }
-        const delaySeconds = 1 + Math.random() * 60;
+        const delaySeconds = 1 + Math.random() * 120;
         const payload: NotifyFeedPayload = {
             globalFeedId,
         };
@@ -105,71 +105,6 @@ export async function notify(shard: number, shardCount: number) {
 
     await Promise.all(promises);
     console.log(`[S${shard}] Finished enqueuing ${promises.length} tasks`);
-    
-    // getFunctions().taskQueue("notifyFeed").enqueue({
-        
-    // });
-}
-
-// // shardCount must evenly divide 100_000; not change this constant
-// export async function notify_old(shard: number, shardCount: number) {
-//     const shardSize = 100_000 / shardCount;
-//     const min = shard * shardSize;
-//     const max = (shard + 1) * shardSize;
-
-//     // Fetch all notif_subs in the shard using collection group query
-//     const db = admin.firestore();
-
-//     const notifSubs = await db.collectionGroup('notif_subs')
-//         .where('shard', '>=', min)
-//         .where('shard', '<', max)
-//         .get()
-//         .then((snapshot) => 
-//             snapshot.docs.map(notifSubFromSnapshot).filter((x) => x !== undefined) as NotifSubWithIds[]
-//         );
-    
-//     // Group by globalFeedId
-//     const notifSubsByFeedId: { [feedId: string]: NotifSubWithIds[] } = {};
-//     notifSubs.forEach((notifSub) => {
-//         if (!notifSubsByFeedId[notifSub.notifSub.globalFeedId]) {
-//             notifSubsByFeedId[notifSub.notifSub.globalFeedId] = [];
-//         }
-//         notifSubsByFeedId[notifSub.notifSub.globalFeedId].push(notifSub);
-//     });
-
-//     const BATCH_SIZE = 10;
-//     const MAX_BATCHES = 10; // We have a timeout of 9 mins, so we should be able to handle a certain number of batches
-//     const n_batches = Math.min(MAX_BATCHES, Math.ceil(Object.keys(notifSubsByFeedId).length / BATCH_SIZE));
-//     const batches = splitIntoBatches(Object.keys(notifSubsByFeedId), n_batches);
-//     console.log(`[S${shard}] Fetching ${Object.keys(notifSubsByFeedId).length} feeds to notify; ${n_batches} batches`);
-
-//     for (let i = 0; i < n_batches; i++) {
-//         const batch = batches[i];
-//         await Promise.all(batch.map(async (globalFeedId) => {
-//             try {
-//                 await notifyFeed(globalFeedId, notifSubsByFeedId[globalFeedId]);
-//             }
-//             catch (e) {
-//                 console.error(`[S${shard}] Failed to notify feed ${globalFeedId}: ${e}`);
-//             }
-//         }));   
-//         console.log(`[S${shard}] Finished batch ${i}`);
-//     }
-//     console.log(`[S${shard}] Finished`);
-// }
-
-function splitIntoBatches<T>(arr: T[], count: number): T[][] {
-    const batches: T[][] = [];
-    // Create batches
-    for (let i = 0; i < count; i++) {
-        batches.push([]);
-    }
-    // Assign objects to batches
-    arr.forEach((obj, i) => {
-        const batchIndex = i % count;
-        batches[batchIndex].push(obj);
-    });
-    return batches;
 }
 
 function notifSubFromSnapshot(snapshot: FirebaseFirestore.QueryDocumentSnapshot<FirebaseFirestore.DocumentData>): NotifSubWithIds | undefined {
@@ -205,11 +140,11 @@ export async function notifyFeedWithGlobalId(globalId: string): Promise<void> {
         .then((snapshot) => 
             snapshot.docs.map(notifSubFromSnapshot).filter((x) => x !== undefined) as NotifSubWithIds[]
         );
-    await notifyFeed(globalId, notifSubs);
-    console.log('Finished notifying feed', globalId);
+    await notifyFeed(notifSubs);
+    console.log(`Finished notifying feed ${globalId}, ${notifSubs.length} subs`);
 }
 
-async function notifyFeed(globalId: string, notifSubs: NotifSubWithIds[]): Promise<void> {
+async function notifyFeed(notifSubs: NotifSubWithIds[]): Promise<void> {
     // Fetch feed
     // Iterate over subs
     // If feed has new items, send notifications
