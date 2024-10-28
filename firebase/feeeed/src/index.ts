@@ -89,19 +89,19 @@ export const notifyFeed = onTaskDispatched<NotifyFeedPayload>(
 
 // export const notifyAll = functions.https.onRequest(notifyAllHandler);
 
-const N_SHARDS = 10;
-const TIMEOUT = 9 * 60;
-// Only run every 2 hours
-exports.n0 = onSchedule({schedule: '0 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(0, N_SHARDS));
-exports.n1 = onSchedule({schedule: '3 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(1, N_SHARDS));
-exports.n2 = onSchedule({schedule: '6 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(2, N_SHARDS));
-exports.n3 = onSchedule({schedule: '9 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(3, N_SHARDS));
-exports.n4 = onSchedule({schedule: '12 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(4, N_SHARDS));
-exports.n5 = onSchedule({schedule: '15 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(5, N_SHARDS));
-exports.n6 = onSchedule({schedule: '18 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(6, N_SHARDS));
-exports.n7 = onSchedule({schedule: '21 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(7, N_SHARDS));
-exports.n8 = onSchedule({schedule: '24 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(8, N_SHARDS));
-exports.n9 = onSchedule({schedule: '27 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(9, N_SHARDS));
+const N_SHARDS = 4;
+const TIMEOUT = 10 * 60;
+// Only run every 4 hours
+exports.n0 = onSchedule({schedule: '0 0-23/4 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(0, N_SHARDS));
+exports.n1 = onSchedule({schedule: '3 0-23/4 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(1, N_SHARDS));
+exports.n2 = onSchedule({schedule: '6 0-23/4 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(2, N_SHARDS));
+exports.n3 = onSchedule({schedule: '9 0-23/4 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(3, N_SHARDS));
+// exports.n4 = onSchedule({schedule: '12 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(4, N_SHARDS));
+// exports.n5 = onSchedule({schedule: '15 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(5, N_SHARDS));
+// exports.n6 = onSchedule({schedule: '18 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(6, N_SHARDS));
+// exports.n7 = onSchedule({schedule: '21 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(7, N_SHARDS));
+// exports.n8 = onSchedule({schedule: '24 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(8, N_SHARDS));
+// exports.n9 = onSchedule({schedule: '27 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(9, N_SHARDS));
 // exports.n10 = onSchedule({schedule: '30 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(10, N_SHARDS));
 // exports.n11 = onSchedule({schedule: '33 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(11, N_SHARDS));
 // exports.n12 = onSchedule({schedule: '36 0-23/2 * * *', timeoutSeconds: TIMEOUT}, async (ctx) => await notify(12, N_SHARDS));
