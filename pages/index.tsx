@@ -31,7 +31,7 @@ const Home: NextPage = () => {
       <div className={styles.blackPage}>
         <div className={styles.longform}>
           <h1>scroll on your own terms</h1>
-          <p>In 2023, we work, play, sleep... and scroll. feeds and timelines dictate where our spare attention goes: what we read, watch and care about.</p>
+          <p>In 2025, we work, play, sleep... and scroll. feeds and timelines dictate where our spare attention goes: what we read, watch and care about.</p>
           <p>But your “for you” page isn’t really <em>for you</em> — it’s just the content that the company knows will keep you hooked.</p>
           <p>What if you ran your own news feed? You could fill it with things you actually care about, not just clickbait. real journalism, not whatever your racist high-school classmate shares. Learn something new, remember to stay active, keep tabs on what matters.</p>
           <p>feeeed is an app for that!</p>
