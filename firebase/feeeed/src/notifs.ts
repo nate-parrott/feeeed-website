@@ -4,7 +4,13 @@ import { FeedItem, fetchFeed } from "./feed";
 import { getFunctions } from "firebase-admin/functions";
 import { getFunctionUrl } from "./taskHelpers";
 
+const NOTIFICATIONS_DISABLED = true;
+
 export const notifyAllHandler = (request: functions.Request, response: functions.Response) => {
+    if (NOTIFICATIONS_DISABLED) {
+        response.send('Notifications are disabled');
+        return;
+    }
     // Send hello world
     // For testing, fetch the verge RSS feed:
     const url = "http://www.theverge.com/rss/full.xml";
@@ -58,6 +64,11 @@ export type NotifyFeedPayload = { globalFeedId: string };
 
 // shardCount must evenly divide 100_000; not change this constant
 export async function notify(shard: number, shardCount: number) {
+    if (NOTIFICATIONS_DISABLED) {
+        console.log('Notifications are disabled');
+        return;
+    }
+
     const shardSize = 100_000 / shardCount;
     const min = shard * shardSize;
     const max = (shard + 1) * shardSize;

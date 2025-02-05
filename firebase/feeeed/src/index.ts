@@ -70,22 +70,22 @@ export const download = functions.https.onRequest((request, response) => {
     });
 });
 
-export const notifyFeed = onTaskDispatched<NotifyFeedPayload>(
-  {
-    retryConfig: {
-      maxAttempts: 0
-    },
-    rateLimits: {
-      maxConcurrentDispatches: 1000
-    },
-    timeoutSeconds: 480,
-  },
-  async (req) => {
-    const { data } = req;
-    console.log('[notifyFeed task] payload:', data);
-    return notifyFeedWithGlobalId(data.globalFeedId);
-  }
-);
+// export const notifyFeed = onTaskDispatched<NotifyFeedPayload>(
+//   {
+//     retryConfig: {
+//       maxAttempts: 0
+//     },
+//     rateLimits: {
+//       maxConcurrentDispatches: 1000
+//     },
+//     timeoutSeconds: 480,
+//   },
+//   async (req) => {
+//     const { data } = req;
+//     console.log('[notifyFeed task] payload:', data);
+//     return notifyFeedWithGlobalId(data.globalFeedId);
+//   }
+// );
 
 // export const notifyAll = functions.https.onRequest(notifyAllHandler);
 
