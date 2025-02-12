@@ -1,60 +1,75 @@
 
 .container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  /* display: flex;
+  flex-direction: column; */
+  height: 100%;
+  font-family: "Avenir Next", "Avenir", sans-serif;
 }
+
+html:has(.container), body:has(.container), div:has(>.container) {
+  height: 100%;
+}
+
+/* SPLASH */
 
 .splash {
   position: relative;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  background-image: url('/Clouds5.jpg');
+  /* background-image: url('/Clouds5.jpg'); */
+  background: linear-gradient(to bottom, #FBE5AB, #F6C6C8);
   background-size: cover;
   background-position: center;
   align-items: center;
-  padding: 5vw;
+  padding: 6vw;
   box-sizing: border-box;
 }
 
 .phonePic {
   flex-grow: 1;
-  background-image: url('/FloatingPhone.png');
+  background-image: url('/ExplodedPhone.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   align-self: stretch;
+  margin: -0.5em;
 }
 
 .splashCTA {
   text-align: center;
-  color: black;
-  font-family: 'Playfair Display', serif;
+  color: #6F4B44;
+  /* font-family: 'Playfair Display', serif; */
 }
 
 .splashCTA h1 {
-  font-size: 2em;
-  font-weight: normal;
+  font-size: 2.5em;
+  /* font-weight: normal; */
   margin-bottom: 0.2em;
+  margin-top: -0.5em;
+  line-height: 1.1;
 }
 
-@media screen and (min-width: 600px) {
+.splashCTA p {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+@media screen and (min-width: 800px) {
   .splash {
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: center;
+    height: 100vh;
   }
   .splashCTA {
     width: 50%;
     padding-left: 5vw;
     box-sizing: border-box;
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
-}
-
-@media screen and (min-width: 1100px) {
-  .splashCTA {
-    font-size: 2em;
+  .splashCTA h1 {
+    font-size: 3em;
+    margin-top: 0;
   }
 }
 
@@ -63,28 +78,37 @@
   align-items: center;
   flex-direction: row;
   align-self: center;
-  background-color: black;
-  color: #D4DAF3;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 0.4em 0.8em;
-  border-radius: 1em;
+  background-color: rgba(255, 240, 240, 1);
+  box-shadow: 0 4px 0 rgb(211, 178, 178), 0 0 16px rgba(0,0,0,0.05);
+  font-weight: 600;
+  font-size: 1.1em;
+  padding: 0.4em 1.0em;
+  border-radius: 0.4em;
+  position: relative;
+  margin: 0.5em;
 }
 
-.downloadIcon img {
+.downloadIcon:hover {
+  top: -2px;
+  box-shadow: 0 6px 0 rgb(211, 178, 178), 0 0 16px rgba(0,0,0,0.05);
+}
+
+.downloadIcon:active {
+  top: 3px;
+  box-shadow: 0 1px 0 rgb(211, 178, 178), 0 0 16px rgba(0,0,0,0.05);
+}
+
+/* .downloadIcon img {
   height: 1em;
   width: 1em;
   margin-left: 0.5em;
-}
+} */
+
+/* LONGFORM */
 
 .blackPage {
   background-color: #0D0D13;
   color: white;
-}
-
-.whitePage {
-
 }
 
 .featuresLabel {
@@ -92,7 +116,7 @@
   text-align: center;
   font-size: 3em;
   margin-bottom: 1.5em;
-  font-family: 'Playfair Display', serif;
+  /* font-family: 'Playfair Display', serif; */
 }
 
 .blackPage, .whitePage {
@@ -105,7 +129,7 @@
 .longform {
   max-width: 800px;
   font-size: 1.3em;
-  font-family: 'Playfair Display', serif;
+  /* font-family: 'Playfair Display', serif; */
 }
 
 @media screen and (min-width: 600px) {
@@ -123,20 +147,21 @@
 }
 
 .longform h1 {
-  font-weight: normal;
+  font-size: 1em;
+  /* font-weight: normal; */
 }
 
 .footer {
   display: flex;
   flex: 1;
   padding: 2rem 1rem;
-  border-top: 1px solid #eaeaea;
+  /* border-top: 1px solid #eaeaea; */
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.footer a {
+.footer a:not(.downloadIcon) {
   display: flex;
   justify-content: center;
   align-items: center;
