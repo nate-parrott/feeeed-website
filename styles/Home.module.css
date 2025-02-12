@@ -68,8 +68,14 @@ html:has(.container), body:has(.container), div:has(>.container) {
     font-size: 1.3em;
   }
   .splashCTA h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .splashCTA h1 {
+    font-size: 3em;
   }
 }
 
