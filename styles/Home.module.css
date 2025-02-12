@@ -77,6 +77,9 @@ html:has(.container), body:has(.container), div:has(>.container) {
   .splashCTA h1 {
     font-size: 3em;
   }
+  .phonePic {
+    margin: -3em;
+  }
 }
 
 .downloadIcon {
